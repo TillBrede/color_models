@@ -44,26 +44,33 @@ mixin CastToColor on cm.ColorModel {
 
   cm.ColorModel _cast() {
     if (this is ColorModel) {
-      switch (runtimeType) {
-        case CmykColor:
-          return cm.CmykColor.fromList(toListWithAlpha());
-        case HsbColor:
-          return cm.HsbColor.fromList(toListWithAlpha());
-        case HsiColor:
-          return cm.HsiColor.fromList(toListWithAlpha());
-        case HslColor:
-          return cm.HslColor.fromList(toListWithAlpha());
-        case HspColor:
-          return cm.HspColor.fromList(toListWithAlpha());
-        case LabColor:
-          return cm.LabColor.fromList(toListWithAlpha());
-        case OklabColor:
-          return cm.OklabColor.fromList(toListWithAlpha());
-        case RgbColor:
-          return cm.RgbColor.fromList(
-              (this as RgbColor).toPreciseListWithAlpha());
-        case XyzColor:
-          return cm.XyzColor.fromList(toListWithAlpha());
+      if (this is CmykColor) {
+        return cm.CmykColor.fromList(toListWithAlpha());
+      }
+      if (this is HsbColor) {
+        return cm.HsbColor.fromList(toListWithAlpha());
+      }
+      if (this is HsiColor) {
+        return cm.HsiColor.fromList(toListWithAlpha());
+      }
+      if (this is HslColor) {
+        return cm.HslColor.fromList(toListWithAlpha());
+      }
+      if (this is HspColor) {
+        return cm.HspColor.fromList(toListWithAlpha());
+      }
+      if (this is LabColor) {
+        return cm.LabColor.fromList(toListWithAlpha());
+      }
+      if (this is OklabColor) {
+        return cm.OklabColor.fromList(toListWithAlpha());
+      }
+      if (this is RgbColor) {
+        return cm.RgbColor.fromList(
+            (this as RgbColor).toPreciseListWithAlpha());
+      }
+      if (this is XyzColor) {
+        return cm.XyzColor.fromList(toListWithAlpha());
       }
       throw UnimplementedError('$runtimeType hasn\'t been implemented yet.');
     }
@@ -188,25 +195,25 @@ extension CastFromHspColor on HspColor {
 extension CastToLabColor on cm.LabColor {
   /// Casts a [LabColor] from the `color_models` package to a
   /// [LabColor] from the `flutter_color_models` package.
-  LabColor cast() => LabColor(lightness, a, b, alpha);
+  LabColor cast() => LabColor(lightness, chromaticityA, chromaticityB, alpha);
 }
 
 extension CastFromLabColor on LabColor {
   /// Casts a [LabColor] from the `color_models` package to a
   /// [LabColor] from the `flutter_color_models` package.
-  cm.LabColor cast() => cm.LabColor(lightness, a, b, alpha);
+  cm.LabColor cast() => cm.LabColor(lightness, chromaticityA, chromaticityB, alpha);
 }
 
 extension CastToOklabColor on cm.OklabColor {
   /// Casts a [OklabColor] from the `color_models` package to a
   /// [OklabColor] from the `flutter_color_models` package.
-  OklabColor cast() => OklabColor(lightness, a, b, alpha);
+  OklabColor cast() => OklabColor(lightness, chromaticityA, chromaticityB, alpha);
 }
 
 extension CastFromOklabColor on OklabColor {
   /// Casts a [OklabColor] from the `color_models` package to a
   /// [OklabColor] from the `flutter_color_models` package.
-  cm.OklabColor cast() => cm.OklabColor(lightness, a, b, alpha);
+  cm.OklabColor cast() => cm.OklabColor(lightness, chromaticityA, chromaticityB, alpha);
 }
 
 extension CastToRgbColor on cm.RgbColor {
