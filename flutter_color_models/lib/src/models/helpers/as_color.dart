@@ -11,16 +11,16 @@ extension ColorModelWithValues on ColorModel {
     assert(colorSpace == null || colorSpace == ui.ColorSpace.sRGB);
     Color color = toRgbColor() as Color;
     if (alpha != null) {
-      color = color.withAlpha(alpha ~/ 255.0);
+      color = color.withAlpha((alpha * 255).toInt());
     }
     if (red != null) {
-      color = color.withRed(red ~/ 255.0);
+      color = color.withRed((red * 255).toInt());
     }
     if (green != null) {
-      color = color.withGreen(green ~/ 255.0);
+      color = color.withGreen((green * 255).toInt());
     }
     if (blue != null) {
-      color = color.withBlue(blue ~/ 255.0);
+      color = color.withBlue((blue * 255).toInt());
     }
     return color;
   }
